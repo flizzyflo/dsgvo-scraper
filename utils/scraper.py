@@ -1,31 +1,23 @@
-from transformer import extract_row_content
+from utils.transformer import extract_row_content
 from typing import List, Dict
 
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
-# globals to store information in
-URL: str = "https://www.dsgvo-portal.de/dsgvo-bussgeld-datenbank/"
-driver = webdriver.Firefox()
-driver.get(URL)
 
-# global result list
-transformed_elements: List[Dict[str, str]] = list()
-
-
-def __extract_rows():
+def __extract_rows(driver, transformed_elements):
     """
     Extracts content per page directly after it has been read.
     :return: None
     """
+
     rows_per_page = driver.find_elements(By().TAG_NAME, "tr")
     extract_row_content(rows_per_page, transformed_elements)
 
 
-def __is_last_page() -> bool:
+def __is_last_page(driver) -> bool:
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination-info")))
     raw_page_status: str = driver.find_element(By().CLASS_NAME, "pagination-info").text
 
@@ -48,7 +40,8 @@ def __is_last_page() -> bool:
         print(ie)
         return False
 
-def __go_to_next_page():
+def __go_to_next_page(driver):
+    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination")))
     all_links: List[WebElement] = driver.find_elements(By().TAG_NAME, "a")
     for some_link in all_links:
         if some_link.text == "›":
@@ -62,13 +55,13 @@ def __go_to_next_page():
     except UnboundLocalError as ule:
         print(ule)
 
-def extract_content() -> List[Dict[str, str]]:
+def extract_content(driver) -> List[Dict[str, str]]:
     last_page: bool = False
-
+    transformed_elements: List[Dict[str, str]] = list()
     while not last_page:
 
-        __extract_rows()
-        last_page = __is_last_page()
-        __go_to_next_page()
+        __extract_rows(driver=driver, transformed_elements=transformed_elements)
+        last_page = __is_last_page(driver=driver)
+        __go_to_next_page(driver=driver)
 
     return transformed_elements
