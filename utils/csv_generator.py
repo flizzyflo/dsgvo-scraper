@@ -10,7 +10,7 @@ class NoDirException(Exception):
 def generate_csv(content: List[Dict[str, str]], path: Union[str|Path]):
 
     if isinstance(path, str):
-        path = Path(str)
+        path = Path(path)
 
     if not path.is_dir():
         raise NoDirException(path, " is not directory. Can not store file to that path. Please provide directory.")
