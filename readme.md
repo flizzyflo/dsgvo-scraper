@@ -37,12 +37,12 @@ PATH = "/your/directory/to/save/filename.csv"
 
 ### Usage
 	1.	Run the scraper:
-  python main.py
+  	python main.py
 
 	2.	Process:
-	•	The scraper opens the target URL.
-	•	It navigates through the paginated table.
-	•	Relevant information is extracted and saved into a CSV file.
+	The scraper opens the target URL.
+	It navigates through the paginated table.
+	Relevant information is extracted and saved into a CSV file.
 	3.	Output:
 A file named extracted_dsgvo_content.csv will be stored in the specified directory.
 
@@ -50,15 +50,15 @@ A file named extracted_dsgvo_content.csv will be stored in the specified directo
 
 #### Main Functions
 	1.	extract_content (in scraper.py):
-	•	Orchestrates the scraping process across multiple pages.
+	Orchestrates the scraping process across multiple pages.
 	2.	extract_row_content (in transformer.py):
-	•	Transforms each table row into a standardized dictionary format.
+	Transforms each table row into a standardized dictionary format.
 	3.	generate_csv (in csv_generator.py):
-	•	Saves the extracted data into a CSV file.
+	Saves the extracted data into a CSV file.
 
  ### Error Handling
-	•	If the specified path in PATH is not a directory, a custom NoDirException is raised.
-	•	Errors during page navigation or data transformation are printed without stopping the program.
+	If the specified path in PATH is not a directory, a custom NoDirException is raised.
+	Errors during page navigation or data transformation are printed without stopping the program.
 
 ### Example Output
 
@@ -68,5 +68,5 @@ date	fee	company	country	reason
 2023-02-10	150000 €	Test AG	France	Violation of data protection
 
  ### Useful Resources
-	•	Selenium Documentation
-	•	Pandas Documentation
+	Selenium Documentation
+	Pandas Documentation
