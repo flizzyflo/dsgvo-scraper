@@ -17,4 +17,4 @@ def generate_csv(content: List[Dict[str, str]], path: Union[str|Path]):
 
     df = pd.DataFrame(content)
 
-    df.to_csv(os.path.join(f"{path}{os.sep}extracted_dsgvo_content.csv"), index=False)
+    df.to_csv(os.path.join(f"{path}{os.sep}extracted_dsgvo_content.csv"), index=False, encoding="utf-8-sig")
