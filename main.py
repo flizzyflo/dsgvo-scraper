@@ -11,6 +11,7 @@ def main():
 
     content_rows = extract_content(driver)
     generate_csv(content_rows, PATH)
+    driver.close()
 
 if __name__ == '__main__':
     main()
