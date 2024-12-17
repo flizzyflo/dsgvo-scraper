@@ -62,11 +62,10 @@ A file named extracted_dsgvo_content.csv will be stored in the specified directo
 
 ### Example Output
 
-CSV File (extracted_dsgvo_content.csv):
-date	fee	company	country	reason
-2023-01-15	50000 €	Example GmbH	Germany	Insufficient data security
-2023-02-10	150000 €	Test AG	France	Violation of data protection
-
+| date        | fee       | company        | country | reason                       |
+|-------------|-----------|----------------|---------|------------------------------|
+| 2023-01-15  | 50000 €   | Example GmbH   | Germany | Insufficient data security   |
+| 2023-02-10  | 150000 €  | Test AG        | France  | Violation of data protection |
  ### Useful Resources
 	Selenium Documentation
 	Pandas Documentation
