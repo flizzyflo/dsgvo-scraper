@@ -1,5 +1,6 @@
 from utils.transformer import extract_row_content
 from typing import List, Dict
+from hidden import DRIVER_TIMEOUT
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -24,7 +25,7 @@ def __is_last_page(driver) -> bool:
     :return: boolean, either true if end of page, or false if not
     """
 
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination-info")))
+    WebDriverWait(driver, DRIVER_TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination-info")))
     raw_page_status: str = driver.find_element(By().CLASS_NAME, "pagination-info").text
 
     try:
@@ -53,7 +54,7 @@ def __go_to_next_page(driver):
     :return: None
     """
 
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination")))
+    WebDriverWait(driver, DRIVER_TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination")))
     all_links: List[WebElement] = driver.find_elements(By().TAG_NAME, "a")
     for some_link in all_links:
         if some_link.text == "›":
