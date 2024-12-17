@@ -18,6 +18,12 @@ def __extract_rows(driver, transformed_elements):
 
 
 def __is_last_page(driver) -> bool:
+    """
+    Checks whether the webscraper reached the last page of the several pages. uses the pagination at page bottom to check.
+    :param driver: selenium webdriver to perform action
+    :return: boolean, either true if end of page, or false if not
+    """
+
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination-info")))
     raw_page_status: str = driver.find_element(By().CLASS_NAME, "pagination-info").text
 
@@ -41,6 +47,12 @@ def __is_last_page(driver) -> bool:
         return False
 
 def __go_to_next_page(driver):
+    """
+    Moves to next page of the main page to extract next elements
+    :param driver: selenium webdriver to perform action
+    :return: None
+    """
+
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "pagination")))
     all_links: List[WebElement] = driver.find_elements(By().TAG_NAME, "a")
     for some_link in all_links:
@@ -56,6 +68,12 @@ def __go_to_next_page(driver):
         print(ule)
 
 def extract_content(driver) -> List[Dict[str, str]]:
+    """
+    Wrapper function to be called to perform the scraping
+    :param driver: selenium webdriver to perform action
+    :return: Resultlist containing dictionaries. Keys are headers, values
+    """
+
     last_page: bool = False
     transformed_elements: List[Dict[str, str]] = list()
     while not last_page:
