@@ -7,14 +7,14 @@ This project is a web scraper that uses Selenium to extract data from the DSGVO 
 The scraper navigates through multiple pages of the website, extracts relevant information (such as date, fine amount, company, country, and reason for the fine), and stores the data locally in a CSV file.
 ### Projektstruktur
 
-├── main.py                  Entry point for the scraper
+├── main.py
 ├── utils/
-│   ├── scraper.py           Logic for content extraction
-│   ├── transformer.py       Transforms raw table data into a uniform format
-│   └── csv_generator.py     Generates CSV files from extracted data
-├── hidden.py                Configuration file (e.g., PATH for output directory)
-├── requirements.txt         List of required Python dependencies
-└── README.md                Project description
+│   ├── scraper.py
+│   ├── transformer.py
+│   └── csv_generator.py
+├── hidden.py 
+├── requirements.txt 
+└── README.md
 
 ### Prerequisites
 1.	Python (>=3.8)
