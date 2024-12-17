@@ -10,11 +10,17 @@ The scraper navigates through multiple pages of the website, extracts relevant i
 ├── main.py
 
 ├── utils/
+
 │   ├── scraper.py
+
 │   ├── transformer.py
+
 │   └── csv_generator.py
+
 ├── hidden.py 
+
 ├── requirements.txt 
+
 └── README.md
 
 ### Prerequisites
