@@ -64,8 +64,8 @@ A file named extracted_dsgvo_content.csv will be stored in the specified directo
 
 | date        | fee       | company        | country | reason                       |
 |-------------|-----------|----------------|---------|------------------------------|
-| 2023-01-15  | 50000 €   | Example GmbH   | Germany | Insufficient data security   |
-| 2023-02-10  | 150000 €  | Test AG        | France  | Violation of data protection |
+| 2023-01-15  | 50000 €   | Example GmbH   | DE      | Insufficient data security   |
+| 2023-02-10  | 150000 €  | Test AG        | FR	     | Violation of data protection |
  ### Useful Resources
 	Selenium Documentation
 	Pandas Documentation
