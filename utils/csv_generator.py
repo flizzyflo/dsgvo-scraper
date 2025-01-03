@@ -1,4 +1,5 @@
 import os.path
+import datetime
 from pathlib import Path
 from typing import Union, List, Dict
 import pandas as pd
@@ -17,4 +18,4 @@ def generate_csv(content: List[Dict[str, str]], path: Union[str|Path]):
 
     df = pd.DataFrame(content)
 
-    df.to_csv(os.path.join(f"{path}{os.sep}extracted_dsgvo_content.csv"), index=False, encoding="utf-8-sig")
+    df.to_csv(os.path.join(f"{path}{os.sep}{datetime.date.today()}_extracted-dsgvo-content.csv"), index=False, encoding="utf-8-sig")
