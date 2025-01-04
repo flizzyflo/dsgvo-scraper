@@ -1,3 +1,5 @@
+import datetime
+
 from utils.scraper import extract_content
 from utils.csv_generator import generate_csv
 from hidden import PATH
@@ -9,9 +11,10 @@ def main():
     driver = webdriver.Firefox()
     driver.get(URL)
 
-    content_rows = extract_content(driver)
+    content_rows = extract_content(driver=driver)
     generate_csv(content_rows, PATH)
     driver.close()
 
 if __name__ == '__main__':
     main()
+
